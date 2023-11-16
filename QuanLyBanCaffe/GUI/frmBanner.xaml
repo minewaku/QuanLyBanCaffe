@@ -1,0 +1,16 @@
+﻿<Page x:Class="QuanLyBanCaffe.GUI.frmBanner"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyBanCaffe.GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="660" d:DesignWidth="1000"
+      Title="frmBanner">
+
+    <Grid>
+        <StackPanel>
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="/Resources/banner.jpg" Stretch="Fill" Width="1000" Height="660"/>
+        </StackPanel>
+    </Grid>
+</Page>

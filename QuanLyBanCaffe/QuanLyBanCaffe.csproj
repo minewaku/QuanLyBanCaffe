@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <LangVersion>11</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\account.ico" />
+    <None Remove="Resources\ad.png" />
+    <None Remove="Resources\banner.ico" />
+    <None Remove="Resources\banner.jpg" />
+    <None Remove="Resources\bill.ico" />
+    <None Remove="Resources\billboard-design.png" />
+    <None Remove="Resources\catagory.ico" />
+    <None Remove="Resources\drink.ico" />
+    <None Remove="Resources\logo.ico" />
+    <None Remove="Resources\sell.ico" />
+    <None Remove="Resources\statistics.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\account.ico" />
+    <Resource Include="Resources\banner.ico" />
+    <Resource Include="Resources\banner.jpg" />
+    <Resource Include="Resources\bill.ico" />
+    <Resource Include="Resources\billboard-design.png" />
+    <Resource Include="Resources\catagory.ico" />
+    <Resource Include="Resources\drink.ico" />
+    <Resource Include="Resources\logo.ico" />
+    <Resource Include="Resources\sell.ico" />
+    <Resource Include="Resources\statistics.ico" />
+  </ItemGroup>
+
+</Project>
