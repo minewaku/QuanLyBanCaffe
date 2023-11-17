@@ -2,7 +2,6 @@ create database QuanLyBanCaffe
 go
 
 use QuanLybanCaffe;
-
 create table Catagory (
 	catagoryId bigint primary key identity(1,1),
 	name varchar(255),
@@ -25,18 +24,36 @@ create table [User] (
 	username varchar(255) NOT NULL,
 	phone varchar(10),
 	address text,
-	role varchar(255) CHECK (role IN ('NHAN VIEN', 'QUAN LY')) default 'NHAN VIEN' NOT NULL,
+	role varchar(255) CHECK (role IN ('STAFF', 'ADMIN')) default 'STAFF' NOT NULL,
 	password varchar(255) default 123 NOT NULL,
 	active bit default 1
 );
 
+create table [Table] (
+	tableId bigint primary key identity(1, 1),
+	name varchar(255) NOT NULL,
+	status varchar(5) CHECK (status IN ('EMPTY', 'FULL')) default 'EMPTY' NOT NULL,
+	active bit default 1
+)
+
 create table Bill (
 	billId bigint primary key identity(1,1),
 	userId bigint references [User](userId),
+	tableId bigint references [Table](tableId),
 	quantity int default 0,
 	total money default 0,
 	receive money default 0,
 	change money default 0,
 	createdDate datetime default GETDATE(),
-	status varchar(255) CHECK (status IN ('DA HUY', 'DA THANH TOAN', 'CHUA THANH TOAN')) default 'CHUA THANH TOAN'
+	status varchar(255) CHECK (status IN ('CANCELLED', 'PAID', 'PENDING')) default 'PENDING'
 )
+
+create table BillDetails (
+	billId bigint references Bill(billId),
+	productId bigint references Product(productId),
+	quantity int default 0,
+	total money default 0
+	PRIMARY KEY (billId, productId)
+)
+
+

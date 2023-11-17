@@ -15,33 +15,33 @@ namespace QuanLyBanCaffe.DAO.impl
 
         public List<TableDTO> findAll()
         {
-            string sql = "SELECT * FROM Table";
+            string sql = "SELECT * FROM [Table]";
             return abstractDAO.query(ref sql, new TableDTO());
         }
 
         public List<TableDTO> findLikeName(string name)
         {
-            string sql = "SELECT * FROM Table WHERE name LIKE @0";
+            string sql = "SELECT * FROM [Table] WHERE name LIKE @0";
             return abstractDAO.query(ref sql, new TableDTO(), "%" + name + "%");
         }
 
         public TableDTO findByName(string name)
         {
-            String sql = "SELECT * FROM Table WHERE name = @0";
+            String sql = "SELECT * FROM [Table] WHERE name = @0";
             List<TableDTO> list = abstractDAO.query(ref sql, new TableDTO(), name);
             return list.Any() ? list[0] : null;
         }
 
         public TableDTO findById(long id)
         {
-            String sql = "SELECT * FROM Table WHERE tableId = @0";
+            String sql = "SELECT * FROM [Table] WHERE tableId = @0";
             List<TableDTO> list = abstractDAO.query(ref sql, new TableDTO(), id);
             return list.Any() ? list[0] : null;
         }
 
         public TableDTO findOne()
         {
-            String sql = "SELECT * FROM Table";
+            String sql = "SELECT * FROM [Table]";
             List<TableDTO> list = abstractDAO.query(ref sql, new TableDTO());
             return list.Any() ? list[0] : null;
         }
@@ -50,16 +50,21 @@ namespace QuanLyBanCaffe.DAO.impl
 
         public int add(TableDTO model)
         {
-            string sql = "INSERT INTO Table(name, status, active) VALUES(@0, @1, @2)";
+            string sql = "INSERT INTO [Table](name, status, active) VALUES(@0, @1, @2)";
             return abstractDAO.insert(ref sql, model.name, model.status,model.active);
         }
 
         public int update(TableDTO model)
         {
-            string sql = "UPDATE Table SET name = @0, active = @1 where tableId = @2";
+            string sql = "UPDATE [Table] SET name = @0, active = @1 where tableId = @2";
             return abstractDAO.insert(ref sql, model.name, model.active, model.tableId);
         }
 
+        public int updateByStatus(string status, long id)
+        {
+            string sql = "UPDATE [Table] SET status = @0 where tableId = @1";
+            return abstractDAO.insert(ref sql, status, id);
+        }
 
 
 

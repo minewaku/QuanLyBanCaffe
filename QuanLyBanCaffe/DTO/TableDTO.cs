@@ -11,7 +11,7 @@ namespace QuanLyBanCaffe.DTO
     {
         public long tableId;
         public string name { get; set; } = "";
-        public bool status { get; set; } = true;
+        public string status { get; set; } = "EMPTY";
         public bool active { get; set; } = true;
 
         public TableDTO()
@@ -19,7 +19,7 @@ namespace QuanLyBanCaffe.DTO
 
         }
 
-        public TableDTO(long tableId, string name, bool status, bool active)
+        public TableDTO(long tableId, string name, string status, bool active)
         {
             this.tableId = tableId;
             this.name = name;
@@ -33,7 +33,7 @@ namespace QuanLyBanCaffe.DTO
 
             model.tableId = (long)dataRow["tableId"];
             model.name = (string)dataRow["name"];
-            model.status = (bool)dataRow["status"];
+            model.status = (string)dataRow["status"];
             model.active = (bool)dataRow["active"];
 
             return model;

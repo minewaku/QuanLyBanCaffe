@@ -81,6 +81,7 @@
             </GroupBox>
             <TextBox x:Name="search_textBox" TextWrapping="Wrap" Width="120"/>
             <Button Content="Tim kiem" Click="Search_Click" Width="120"/>
+            <ComboBox x:Name="catagory_comboBox2" Width="120"></ComboBox>
         </StackPanel>
     </Grid>
 </Page>

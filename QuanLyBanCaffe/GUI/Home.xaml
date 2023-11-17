@@ -64,6 +64,7 @@
                     <RowDefinition Height="44"/>
                     <RowDefinition Height="44"/>
                     <RowDefinition Height="44"/>
+                    <RowDefinition Height="44"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -115,7 +116,16 @@
                     </Border>
                 </Button>
 
-                <Button Grid.Row="5" BorderThickness="0" Background="Transparent" Click="Bill_Click">
+                <Button Grid.Row="5" BorderThickness="0" Background="Transparent" Click="Table_Click">
+                    <Border BorderBrush="#FF467FAE" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Center" Padding="4,4,4,4">
+                        <WrapPanel HorizontalAlignment="Left" Margin="3,0,0,0" Width="174">
+                            <Image Height="28" Width="28" Source="/Resources/table.ico" Stretch="Fill" VerticalAlignment="Center" OpacityMask="Black"/>
+                            <TextBlock HorizontalAlignment="Center" Margin="8,0,0,0" TextWrapping="Wrap" Text="Table Management" VerticalAlignment="Center" Foreground="#FF1B5A8A" FontSize="12" FontWeight="Bold"/>
+                        </WrapPanel>
+                    </Border>
+                </Button>
+
+                <Button Grid.Row="6" BorderThickness="0" Background="Transparent" Click="Bill_Click">
                     <Border BorderBrush="#FF467FAE" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Center" Padding="4,4,4,4">
                         <WrapPanel HorizontalAlignment="Left" Margin="3,0,0,0" Width="174">
                             <Image Height="28" Width="28" Source="/Resources/bill.ico" Stretch="Fill" VerticalAlignment="Center" OpacityMask="Black"/>
@@ -124,21 +134,21 @@
                     </Border>
                 </Button>
 
-                <Button Grid.Row="6" BorderThickness="0" Background="Transparent" Click="Statistics_Click">
+                <Button Grid.Row="7" BorderThickness="0" Background="Transparent" Click="Statistics_Click">
                     <Border BorderBrush="#FF467FAE" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Center" Padding="4,4,4,4">
-                        <WrapPanel HorizontalAlignment="Left" Margin="3,0,0,0" Width="172">
+                        <WrapPanel HorizontalAlignment="Left" Margin="3,0,0,0" Width="174">
                             <Image Height="28" Width="28" Source="/Resources/statistics.ico" Stretch="Fill" VerticalAlignment="Center" OpacityMask="Black"/>
-                            <TextBlock HorizontalAlignment="Center" Margin="8,0,0,0" TextWrapping="Wrap" Text="Statistics" VerticalAlignment="Center" Foreground="#FF1B5A8A" FontSize="12" FontWeight="Bold"/>
+                            <TextBlock HorizontalAlignment="Center" Margin="8,0,0,0" TextWrapping="Wrap" Text="Statistic" VerticalAlignment="Center" Foreground="#FF1B5A8A" FontSize="12" FontWeight="Bold"/>
                         </WrapPanel>
                     </Border>
                 </Button>
             </Grid>
 
-            <StackPanel Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <Button HorizontalAlignment="Center" VerticalAlignment="Center" Content="Log out" FontSize="10" Background="#FFF7FD78" Padding="24,2,24,2"/>
+            <StackPanel Grid.Row="6">
+                
             </StackPanel>
-        </Grid>
-
+         </Grid>
+            
         <StackPanel Grid.Column="1">
             <Frame x:Name="Main" NavigationUIVisibility="Hidden"></Frame>
         </StackPanel>

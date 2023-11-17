@@ -18,6 +18,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using QuanLyBanCaffe.LIB.Error;
+using System.CodeDom.Compiler;
 
 namespace QuanLyBanCaffe.GUI
 {
@@ -29,14 +30,12 @@ namespace QuanLyBanCaffe.GUI
         IProductBLL productBll = new ProductBLL();
         ICatagoryBLL catagoryBll = new CatagoryBLL();
 
-        public static List<ProductDTO> prList;
-
         public frmProduct()
         {
-            InitializeComponent();
-            prList = productBll.findAll();
+            InitializeComponent();;
             loadCatagoryCb(catagoryBll.findAll(), "");
             loadCatagoryCb1(catagoryBll.findAll(), "");
+            loadCatagoryCb2(catagoryBll.findAll());
             showList(productBll.findAll());
         }
 
@@ -105,6 +104,26 @@ namespace QuanLyBanCaffe.GUI
             }
         }
 
+        private void loadCatagoryCb2(List<CatagoryDTO> list)
+        {
+            try
+            {
+                ObservableCollection<string> values = new ObservableCollection<string>();
+
+                values.Add("");
+                foreach (CatagoryDTO item in list)
+                {
+                    values.Add(item.name);
+                }
+                catagory_comboBox2.ItemsSource = values;
+                catagory_comboBox2.SelectedItem = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         private void productList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {   try
@@ -163,7 +182,7 @@ namespace QuanLyBanCaffe.GUI
                 {
                     ProductDTO model = new ProductDTO();
 
-                    model.productId = Int32.Parse(productId_textBox.Text);
+                    model.productId = long.Parse(productId_textBox.Text);
                     model.name = name_textBox.Text;
                     model.catagoryId = (catagoryBll.findByName(catagory_comboBox.SelectedItem.ToString())).catagoryId;
                     model.price = Decimal.Parse(price_textBox.Text);
@@ -186,7 +205,26 @@ namespace QuanLyBanCaffe.GUI
         {
             try
             {
-                showList(productBll.findLikeName(search_textBox.Text));
+                if(catagory_comboBox2.SelectedItem == "")
+                {
+                    showList(productBll.findLikeName(search_textBox.Text));
+                } 
+                else
+                {
+                    List<ProductDTO> list = productBll.findLikeName(search_textBox.Text);
+                    List<ProductDTO> result = new List<ProductDTO>();
+
+                    foreach (ProductDTO item in list)
+                    {
+                        if(catagoryBll.findById(item.catagoryId).name == catagory_comboBox2.SelectedItem.ToString())
+                        {
+                            System.Diagnostics.Debug.WriteLine(item.productId.ToString());
+                            result.Add(item);
+                        }
+                    }
+
+                    showList(result);
+                }
             }
             catch (Exception ex)
             {

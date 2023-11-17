@@ -31,7 +31,7 @@ namespace QuanLyBanCaffe.GUI
 
         private void User_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new frmProduct();
+            Main.Content = new frmUser();
         }
 
         private void Selling_Click(object sender, RoutedEventArgs e)
@@ -47,6 +47,11 @@ namespace QuanLyBanCaffe.GUI
         private void Catagory_Click(object sender, RoutedEventArgs e)
         {
             Main.Content = new frmCatagory();
+        }
+
+        private void Table_Click(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new frmTable();
         }
 
         private void Bill_Click(object sender, RoutedEventArgs e)

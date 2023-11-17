@@ -133,6 +133,23 @@ namespace QuanLyBanCaffe.BLL.impl
             }
         }
 
+        public int updateByStatus(string status, long id)
+        {
+            if(status != "EMPTY" && status != "FULL")
+            {
+                throw new Exception("Trang thai khong hop le");
+            }
+
+            try
+            {
+                return tableDao.updateByStatus(status, id);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException(1, ex.Message);
+            }
+        }
+
         public int count()
         {
             throw new NotImplementedException();

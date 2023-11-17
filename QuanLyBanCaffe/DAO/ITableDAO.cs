@@ -17,6 +17,7 @@ namespace QuanLyBanCaffe.DAO
 
         public int add(TableDTO model);
         public int update(TableDTO model);
+        public int updateByStatus(string stattus, long id);
 
         public int count();
     }

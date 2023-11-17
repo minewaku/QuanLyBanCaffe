@@ -15,7 +15,7 @@ namespace QuanLyBanCaffe.DTO
         public string password { get; set; } = "123";
         public string phone { get; set; } = "";
         public string address { get; set; } = "";
-        public string role { get; set; } = "Staff";
+        public string role { get; set; } = "STAFF";
         public bool active { get; set; } = true;
 
         public UserDTO() { 
@@ -36,7 +36,7 @@ namespace QuanLyBanCaffe.DTO
 
         public UserDTO(DataRow dataRow)
         {
-            this.userId = (int)dataRow["userId"];
+            this.userId = (long)dataRow["userId"];
             this.email = (string)dataRow["email"];
             this.username = (string)dataRow["username"];
             this.password = (string)dataRow["password"];
@@ -46,26 +46,11 @@ namespace QuanLyBanCaffe.DTO
             this.active = (bool)dataRow["active"];
         }
 
-        public UserDTO instance(DataRow dataRow) {
-            UserDTO model = new UserDTO();
-
-            model.userId = (int)dataRow["userId"];
-            model.email = (string)dataRow["email"];
-            model.username = (string)dataRow["username"];
-            model.password = (string)dataRow["password"];
-            model.phone = (string)dataRow["phone"];
-            model.address = (string)dataRow["address"];
-            model.role = (string)dataRow["role"];
-            model.active = (bool)dataRow["active"];
-
-            return model;
-        }
-
         UserDTO GenericDTO<UserDTO>.instance(DataRow dataRow)
         {
             UserDTO model = new UserDTO();
 
-            model.userId = (int)dataRow["userId"];
+            model.userId = (long)dataRow["userId"];
             model.email = (string)dataRow["email"];
             model.username = (string)dataRow["username"];
             model.password = (string)dataRow["password"];

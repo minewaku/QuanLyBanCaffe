@@ -17,6 +17,7 @@ namespace QuanLyBanCaffe.BLL
 
         public int add(TableDTO model);
         public int update(TableDTO model);
+        public int updateByStatus(string status, long id);
 
         public int count();
     }

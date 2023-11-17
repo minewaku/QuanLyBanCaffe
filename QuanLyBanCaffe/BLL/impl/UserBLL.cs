@@ -1,4 +1,5 @@
 ﻿using QuanLyBanCaffe.DAO;
+using QuanLyBanCaffe.LIB;
 using QuanLyBanCaffe.DAO.impl;
 using QuanLyBanCaffe.DTO;
 using QuanLyBanCaffe.LIB.Error;
@@ -114,7 +115,7 @@ namespace QuanLyBanCaffe.BLL.impl
 
         public UserDTO login(string email, string password)
         {
-            if (!emailValidation(email))
+            if (!Validation.emailValidation(email))
             {
                 throw new Exception("email khong hop le");
             }
@@ -131,9 +132,13 @@ namespace QuanLyBanCaffe.BLL.impl
 
         public int add(UserDTO model)
         {
-            if (!emailValidation(model.email))
+            if (!Validation.emailValidation(model.email))
             {
                 throw new Exception("email khong hop le");
+            }
+            else if (userDao.findByEmail(model.email) != null)
+            {
+                throw new Exception("email bi trung");
             }
             else if (model.email.Length > 256)
             {
@@ -147,17 +152,25 @@ namespace QuanLyBanCaffe.BLL.impl
             {
                 throw new Exception("Ten vuot qua 256 ky tu");
             }
-            else if (userDao.findByName(model.username) != null)
+            else if (model.password.Trim() == "")
             {
-                throw new Exception("Ten bi trung");
+                throw new Exception("Mat khau khong duoc de trong");
             }
-            else if (phoneValidation(model.phone))
+            else if (model.password.Length > 256)
+            {
+                throw new Exception("Mat khau vuot qua 256 ky tu");
+            }
+            else if (!Validation.phoneValidation(model.phone))
             {
                 throw new Exception("So dien thoai khong hop le");
             }
             else if (model.address.Trim() == "")
             {
                 throw new Exception("Dia chi khong duoc de trong");
+            }
+            else if (model.role.Trim() != "STAFF" && model.role.Trim() != "ADMIN")
+            {
+                throw new Exception("Quyen khong hop le");
             }
 
             try
@@ -171,13 +184,25 @@ namespace QuanLyBanCaffe.BLL.impl
         }
         public int update(UserDTO model)
         {
-            if (!emailValidation(model.email))
+            if (model.userId < 0)
+            {
+                throw new Exception("userId khong hop le");
+            }
+            else if (userDao.findById(model.userId) == null)
+            {
+                throw new Exception("userId khong ton tai");
+            }
+            if (!Validation.emailValidation(model.email))
             {
                 throw new Exception("email khong hop le");
             }
             else if (model.email.Length > 256)
             {
                 throw new Exception("email vuot qua 256 ky tu");
+            }
+            else if (userDao.findByEmail(model.email) != null && userDao.findByEmail(model.email).userId != model.userId)
+            {
+                throw new Exception("email bi trung");
             }
             else if (model.username.Trim() == "")
             {
@@ -187,11 +212,7 @@ namespace QuanLyBanCaffe.BLL.impl
             {
                 throw new Exception("Ten vuot qua 256 ky tu");
             }
-            else if (userDao.findByName(model.username) != null && userDao.findByName(model.username).userId != model.userId)
-            {
-                throw new Exception("Ten bi trung");
-            }
-            else if (phoneValidation(model.phone))
+            else if (!Validation.phoneValidation(model.phone))
             {
                 throw new Exception("So dien thoai khong hop le");
             }
@@ -199,36 +220,19 @@ namespace QuanLyBanCaffe.BLL.impl
             {
                 throw new Exception("Dia chi khong duoc de trong");
             }
-            else if (model.role != "Staff" || model.role != "Admin")
+            else if (model.role.Trim() != "STAFF" && model.role.Trim() != "ADMIN")
             {
-                throw new Exception("Chuc vu khong hop le");
+                throw new Exception("Quyen khong hop le");
             }
 
             try
             {
-                return userDao.add(model);
+                return userDao.update(model);
             }
             catch (Exception ex)
             {
                 throw new AppException(1, ex.Message);
             }
-        }
-
-        public bool emailValidation(string email)
-        {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            Match match = regex.Match(email);
-            return match.Success;
-        }
-
-        public bool phoneValidation(string phone)
-        {
-            if (phone[0] != 0 || phone.Length != 10)
-            {
-                return false;
-            }
-
-            return true;
         }
 
         public int count()
