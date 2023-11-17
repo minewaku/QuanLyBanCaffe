@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace QuanLyBanCaffe.DAO.impl
 {
@@ -50,6 +51,13 @@ namespace QuanLyBanCaffe.DAO.impl
         {
             String sql = "SELECT * FROM Bill where billId = @0";
             List<BillDTO> list = abstractDAO.query(ref sql, new BillDTO(), id);
+            return list.Any() ? list[0] : null;
+        }
+
+        public BillDTO findByCreatedDate(DateTime createdDate)
+        {
+            String sql = "SELECT * FROM Bill where createdDate = @0";
+            List<BillDTO> list = abstractDAO.query(ref sql, new BillDTO(), createdDate);
             return list.Any() ? list[0] : null;
         }
 

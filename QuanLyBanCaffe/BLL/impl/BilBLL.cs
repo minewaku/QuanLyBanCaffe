@@ -1,12 +1,14 @@
 ﻿using QuanLyBanCaffe.DAO;
 using QuanLyBanCaffe.DAO.impl;
 using QuanLyBanCaffe.DTO;
+using QuanLyBanCaffe.LIB;
 using QuanLyBanCaffe.LIB.Error;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace QuanLyBanCaffe.BLL.impl
 {
@@ -127,6 +129,18 @@ namespace QuanLyBanCaffe.BLL.impl
             }
         }
 
+        public BillDTO findByCreatedDate(DateTime createdDate)
+        {
+            try
+            {
+                return billDao.findByCreatedDate(createdDate);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException(1, ex.Message);
+            }
+        }
+
         BillDTO IBillBLL.findOne()
         {
             try
@@ -167,6 +181,18 @@ namespace QuanLyBanCaffe.BLL.impl
         public int count()
         {
             throw new NotImplementedException();
+        }
+
+        public void print(BillDTO billDto)
+        {
+            try
+            {
+                PDFdoc.PDFprint(billDto);
+            }
+            catch (Exception ex)
+            {
+                throw new AppException(1, ex.Message);
+            }
         }
     }
 }

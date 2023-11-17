@@ -20,11 +20,7 @@ namespace QuanLyBanCaffe
     {
         public App()
         {
-/*            IProductBLL productBll = new ProductBLL();
 
-            ProductDTO model = new ProductDTO(17, 3, "why its so bugging hehe", 12000.023m, 15, 0, true);
-            int test = productBll.update(model);
-            Console.WriteLine(test);*/
         }
     }
 }

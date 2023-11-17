@@ -16,6 +16,7 @@ namespace QuanLyBanCaffe.DAO
         public List<BillDTO> findByUserName(string name);
         public List<BillDTO> findByTableName(string name);
         public BillDTO findById(long id);
+        public BillDTO findByCreatedDate(DateTime createdDate);
         public BillDTO findOne();
 
         public int add(BillDTO model);

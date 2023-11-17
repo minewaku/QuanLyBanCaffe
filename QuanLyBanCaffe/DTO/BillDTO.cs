@@ -21,6 +21,8 @@ namespace QuanLyBanCaffe.DTO
         public DateTime createdDate { get; set; } = DateTime.Now;
         public string status { get; set; } = "PENDING"; //PENDING, PAID, CANCELLED;
 
+        public List<BillDetailsDTO> billDetails { get; set; }
+
         public BillDTO() { 
         
         }

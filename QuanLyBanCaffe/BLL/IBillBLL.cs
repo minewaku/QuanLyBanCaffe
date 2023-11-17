@@ -16,6 +16,7 @@ namespace QuanLyBanCaffe.BLL
         public List<BillDTO> findByUserName(string name);
         public List<BillDTO> findByTableName(string name);
         public BillDTO findById(long id);
+        public BillDTO findByCreatedDate(DateTime createdDate);
         public BillDTO findOne();
 
         public int add(BillDTO model);
@@ -24,5 +25,6 @@ namespace QuanLyBanCaffe.BLL
         public int updateStatus(string status, long billId);
 
         public int count();
+        public void print(BillDTO billDto);
     }
 }
