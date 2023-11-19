@@ -16,8 +16,9 @@ namespace QuanLyBanCaffe.DTO
 
         public decimal total { get; set; } = 0;
         public int discount { get; set; } = 0;
+        public decimal final => this.total - (((decimal)discount / 100) * this.total);
         public decimal receive { get; set; } = 0;
-        public decimal change => (this.receive * ((decimal)discount / 100) - this.total);
+        public decimal change => (this.receive - this.final);
         public DateTime createdDate { get; set; } = DateTime.Now;
         public string status { get; set; } = "PENDING"; //PENDING, PAID, CANCELLED;
 

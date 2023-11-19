@@ -12,7 +12,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace QuanLyBanCaffe.BLL.impl
 {
-    public class BilBLL : IBillBLL
+    public class BillBLL : IBillBLL
     {
         IBillDAO billDao = new BillDAO();
         IUserDAO userDao = new UserDAO();
@@ -32,10 +32,10 @@ namespace QuanLyBanCaffe.BLL.impl
 
         List<BillDTO> IBillBLL.findByRange(DateTime start, DateTime end)
         {
-            if(start > end)
+            if (start > end)
             {
                 throw new Exception("Ngay bat dau lon hon ngay ket thuc");
-            } 
+            }
             else if (start > DateTime.Now || end > DateTime.Now)
             {
                 throw new Exception("Ngay bat dau hoac ngay ket thuc lon hon ngay hien tai");
@@ -93,11 +93,11 @@ namespace QuanLyBanCaffe.BLL.impl
             }
         }
 
-        List<BillDTO> IBillBLL.findByUserName(string name)
+        List<BillDTO> IBillBLL.findLikeUserName(string name)
         {
             try
             {
-                return billDao.findByUserName(name);
+                return billDao.findLikeUserName(name);
             }
             catch (Exception ex)
             {
@@ -105,11 +105,11 @@ namespace QuanLyBanCaffe.BLL.impl
             }
         }
 
-        List<BillDTO> IBillBLL.findByTableName(string name)
+        List<BillDTO> IBillBLL.findLikeTableName(string name)
         {
             try
             {
-                return billDao.findByTableName(name);
+                return billDao.findLikeTableName(name);
             }
             catch (Exception ex)
             {
@@ -187,7 +187,7 @@ namespace QuanLyBanCaffe.BLL.impl
         {
             try
             {
-                PDFdoc.PDFprint(billDto);
+                /*PDFdoc.PDFprint(billDto);*/
             }
             catch (Exception ex)
             {

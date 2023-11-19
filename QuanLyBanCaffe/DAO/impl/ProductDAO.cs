@@ -14,7 +14,7 @@ namespace QuanLyBanCaffe.DAO.impl
 
         List<ProductDTO> IProductDAO.findAll()
         {
-            string sql = "SELECT * FROM product";
+            string sql = "SELECT * FROM Product";
             return abstractDAO.query(ref sql, new ProductDTO());
         }
 
@@ -32,7 +32,7 @@ namespace QuanLyBanCaffe.DAO.impl
 
         ProductDTO IProductDAO.findById(long id)
         {
-            String sql = "SELECT * FROM Product where productId = @0";
+            String sql = "SELECT * FROM Product WHERE productId = @0";
             List<ProductDTO> list = abstractDAO.query(ref sql, new ProductDTO(), id);
             return list.Any() ? list[0] : null;
         }

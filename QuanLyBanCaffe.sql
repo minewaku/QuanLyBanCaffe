@@ -2,16 +2,17 @@ create database QuanLyBanCaffe
 go
 
 use QuanLybanCaffe;
+
 create table Catagory (
 	catagoryId bigint primary key identity(1,1),
-	name varchar(255),
+	name varchar(255) UNIQUE NOT NULL,
 	active bit default 1
 );
 
 create table Product (
 	productId bigint primary key identity(1,1),
 	catagoryId bigint references Catagory(catagoryId),
-	name varchar(255),
+	name varchar(255) UNIQUE NOT NULL,
 	price money default 0,
 	quantity int default 0,
 	sold int default 0,
@@ -31,7 +32,7 @@ create table [User] (
 
 create table [Table] (
 	tableId bigint primary key identity(1, 1),
-	name varchar(255) NOT NULL,
+	name varchar(255) UNIQUE NOT NULL,
 	status varchar(5) CHECK (status IN ('EMPTY', 'FULL')) default 'EMPTY' NOT NULL,
 	active bit default 1
 )
@@ -42,6 +43,8 @@ create table Bill (
 	tableId bigint references [Table](tableId),
 	quantity int default 0,
 	total money default 0,
+	discount int CHECK (discount BETWEEN 0 AND 100) default 0,
+	final money default 0,
 	receive money default 0,
 	change money default 0,
 	createdDate datetime default GETDATE(),

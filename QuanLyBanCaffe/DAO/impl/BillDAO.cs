@@ -36,12 +36,12 @@ namespace QuanLyBanCaffe.DAO.impl
             return abstractDAO.query(ref sql, new BillDTO(), start, end);
         }
 
-        public List<BillDTO> findByUserName(string name)
+        public List<BillDTO> findLikeUserName(string name)
         {
-            string sql = "SELECT * FROM Bill INNER JOIN User ON Bill.userId = User.userId WHERE User.name = @0";
+            string sql = "SELECT * FROM Bill INNER JOIN [User] ON Bill.userId = [User].userId WHERE [User].username LIKE @0";
             return abstractDAO.query(ref sql, new BillDTO(), name);
         }
-        public List<BillDTO> findByTableName(string name)
+        public List<BillDTO> findLikeTableName(string name)
         {
             string sql = "SELECT * FROM Bill INNER JOIN Table ON Bill.tableId = Table.tableId WHERE Table.name = @0";
             return abstractDAO.query(ref sql, new BillDTO(), name);
@@ -72,14 +72,14 @@ namespace QuanLyBanCaffe.DAO.impl
 
         public int add(BillDTO model)
         {
-            string sql = "INSERT INTO Bill(billId, userId, tableId, quantity, total, discount, receive, change, createdDate, status) VALUES(@0, @1, @2, @3, @4, @5, @6, @7, @8, @9)";
-            return abstractDAO.insert(ref sql, model.billId, model.userId, model.tableId, model.quantity, model.total, model.discount, model.receive, model.change, model.createdDate, model.status);
+            string sql = "INSERT INTO Bill(billId, userId, tableId, quantity, total, discount, final, receive, change, createdDate, status) VALUES(@0, @1, @2, @3, @4, @5, @6, @7, @8, @9)";
+            return abstractDAO.insert(ref sql, model.billId, model.userId, model.tableId, model.quantity, model.total, model.discount, model.final,model.receive, model.change, model.createdDate, model.status);
         }
 
         public int update(BillDTO model)
         {
-            string sql = "UPDATE Bill SET quantity = @1, total = @2, discount = @3, receive = @4, change = @5, createdDate = @6 WHERE billId = @7";
-            return abstractDAO.insert(ref sql, model.quantity, model.total, model.discount, model.receive, model.change, model.createdDate, model.billId);
+            string sql = "UPDATE Bill SET quantity = @1, total = @2, discount = @3, final = @4, receive = @5, change = @6, createdDate = @7 WHERE billId = @8";
+            return abstractDAO.insert(ref sql, model.quantity, model.total, model.discount, model.final, model.receive, model.change, model.createdDate, model.billId);
         }
 
         public int updateTable(long tableId, long billId)

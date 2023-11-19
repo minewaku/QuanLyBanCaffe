@@ -36,7 +36,7 @@ namespace QuanLyBanCaffe.GUI
 
         private void Selling_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new frmProduct();
+            Main.Content = new frmSelling();
         }
 
         private void Product_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace QuanLyBanCaffe.GUI
 
         private void Bill_Click(object sender, RoutedEventArgs e)
         {
-            Main.Content = new frmProduct();
+            Main.Content = new frmBill();
         }
 
         private void Statistics_Click(object sender, RoutedEventArgs e)

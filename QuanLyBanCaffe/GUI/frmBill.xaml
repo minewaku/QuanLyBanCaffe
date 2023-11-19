@@ -1,0 +1,102 @@
+﻿<Page x:Class="QuanLyBanCaffe.GUI.frmBill"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyBanCaffe.GUI"
+      mc:Ignorable="d" 
+          d:DesignHeight="660" d:DesignWidth="1000"
+      Title="frmBill">
+
+    <Grid>
+        <StackPanel Height="660" Width="1000" Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="660"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <DataGrid x:Name="billList" Height="369" Width="386"  d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" SelectionChanged="billList_SelectionChanged"/>
+
+                    <WrapPanel Height="290">
+                        <TextBox x:Name="search_textBox" TextWrapping="Wrap" Text="" Width="120" Height="32"/>
+                        <Button Click="Search_Click" Content="Search" Width="79"/>
+                        <DatePicker x:Name="start_datePicker" SelectedDate="1-1-0" Width="95"/>
+                        <DatePicker x:Name="end_datePicker" SelectedDate="{x:Static sys:DateTime.Today}" xmlns:sys="clr-namespace:System;assembly=mscorlib" Width="95"/>
+                    </WrapPanel>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1">
+                    <GroupBox Header="Chi tiết hóa đơn">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="biilId: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="0" Grid.Column="2" Content="staff: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="table: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="1" Grid.Column="2" Content="quantity: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="createdDate: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="2" Grid.Column="2" Content="status: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="billId_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="0" Grid.Column="3" x:Name="staffName_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="tableName_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="3" x:Name="quantity_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="createdDate_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="3" x:Name="status_textBox" IsEnabled="False"></TextBox>
+                        </Grid>
+                    </GroupBox>
+
+                    <DataGrid x:Name="billDetailsList" Height="272" Width="515" IsReadOnly="True"/>
+
+                    <GroupBox>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="24"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="Total: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Discount(%): " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Final: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="3" Grid.Column="0" Content="Receive: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+                            <Label Grid.Row="4" Grid.Column="0" Content="Change: " FontSize="12" VerticalContentAlignment="Center" HorizontalContentAlignment="Left"/>
+
+                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="total_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="discount_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="final_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="3" Grid.Column="1" x:Name="receive_textBox" IsEnabled="False"></TextBox>
+                            <TextBox Grid.Row="4" Grid.Column="1" x:Name="change_textBox" IsEnabled="False"></TextBox>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
+            <DatePicker/>
+        </StackPanel>
+    </Grid>
+</Page>

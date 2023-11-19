@@ -16,7 +16,7 @@ namespace QuanLyBanCaffe.LIB
 {
     public class PDFdoc
     {
-        IUserBLL userBLL = new UserBLL();
+       /* IUserBLL userBLL = new UserBLL();
 
         public void PDFprint(BillDTO billDto)
         {
@@ -40,9 +40,9 @@ namespace QuanLyBanCaffe.LIB
             {
                 pdf.Close();
             }
-        }
+        }*/
 
-        public string PDFtemplate(BillDTO bill)
+      /*  public static string PDFtemplate(BillDTO bill)
         {
             string content = String.Format("Mã hoá đơn :{0} \n", bill.billId.ToString());
             content += String.Format("Ngày lập :{0} \n", bill.createdDate.ToString());
@@ -51,13 +51,13 @@ namespace QuanLyBanCaffe.LIB
             content += String.Format("-----------------------|----------|--------------------|-----------\n");
             foreach (BillDetailsDTO item in bill.billDetails)
             {
-                content += item.toprint();
+                content += item.ToString;
             }
             content += String.Format("-----------------------|----------|--------------------|-----------\n");
             content += String.Format("                                            Thành tiền : {0}\n", this.total);
             content += String.Format("                                            Khách trả  : {0}\n", this.pay);
             content += String.Format("                                            Tiền thừa  : {0}\n", this.change);
             return content;
-        }
+        }*/
     }
 }

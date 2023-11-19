@@ -37,8 +37,6 @@ namespace QuanLyBanCaffe.DTO
             ProductDTO model = new ProductDTO();
 
             model.productId = (long)dataRow["productId"];
-            System.Diagnostics.Debug.WriteLine(dataRow["productId"]+ "\n");
-            System.Diagnostics.Debug.WriteLine(productId + "\n");
             model.catagoryId = (long)dataRow["catagoryId"];
             model.name = (string)dataRow["name"];
             model.price = (decimal)dataRow["price"];

@@ -13,8 +13,8 @@ namespace QuanLyBanCaffe.BLL
         public List<BillDTO> findByRange(DateTime start, DateTime end);
         public List<BillDTO> findByTotalASC(DateTime start, DateTime end);
         public List<BillDTO> findByTotalDESC(DateTime start, DateTime end);
-        public List<BillDTO> findByUserName(string name);
-        public List<BillDTO> findByTableName(string name);
+        public List<BillDTO> findLikeUserName(string name);
+        public List<BillDTO> findLikeTableName(string name);
         public BillDTO findById(long id);
         public BillDTO findByCreatedDate(DateTime createdDate);
         public BillDTO findOne();

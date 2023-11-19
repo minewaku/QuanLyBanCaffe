@@ -7,34 +7,39 @@ using System.Threading.Tasks;
 
 namespace QuanLyBanCaffe.DTO
 {
-    public class BillDetailsDTO
+    public class BillDetailsDTO : GenericDTO<BillDetailsDTO>
     {
         public long billId {  get; set; }
-        public long userId { get; set; }
         public long productId { get; set; }
         public int quantity { get; set; }
-        public double total { get; set; }
+        public decimal total { get; set; }
 
         public BillDetailsDTO() { 
         
         }
 
-        public BillDetailsDTO(long billId, long userId, long productId, int quantity, double total)
+        public BillDetailsDTO(long billId, long productId, int quantity, decimal total)
         {
             this.billId = billId;
-            this.userId = userId;
             this.productId = productId;
             this.quantity = quantity;
             this.total = total;
         }
 
-        public BillDetailsDTO(DataRow dataRow)
+        BillDetailsDTO GenericDTO<BillDetailsDTO>.instance(DataRow dataRow)
         {
-            this.billId = (long)dataRow["billId"];
-            this.userId = (long)dataRow["userId"];
-            this.productId = (long)dataRow["productId"];
-            this.quantity = (int)dataRow["quantity"];
-            this.total = (double)dataRow["total"];
+            {
+                BillDetailsDTO model = new BillDetailsDTO();
+
+                model.billId = (long)dataRow["billId"];
+                model.productId = (long)dataRow["productId"];
+                model.quantity = (int)dataRow["quantity"];
+                model.total = (decimal)dataRow["total"];
+
+                System.Diagnostics.Debug.WriteLine(billId + ":" + productId + ":" + quantity + ":" + total);
+
+                return model;
+            }
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿<Page x:Class="QuanLyBanCaffe.GUI.frmSelling"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QuanLyBanCaffe.GUI"
+      mc:Ignorable="d" 
+      d:DesignHeight="660" d:DesignWidth="1000"
+      Title="frmSelling">
+
+    <Grid>
+        <StackPanel Height="660" Width="1000" Background="White">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="660"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0">
+                    <DataGrid x:Name="productList" Height="369" Width="353"/>
+
+                    <WrapPanel Height="290">
+                        <Label Height="72" Width="72" Margin="8, 8, 8, 8" Content="Ban 1" Background="Brown" Foreground="White" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label Height="72" Width="72" Margin="8, 8, 8, 8" Content="Ban 1" Background="Brown" Foreground="White" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label Height="72" Width="72" Margin="8, 8, 8, 8" Content="Ban 1" Background="Brown" Foreground="White" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label Height="72" Width="72" Margin="8, 8, 8, 8" Content="Ban 1" Background="Brown" Foreground="White" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                        <Label Height="72" Width="72" Margin="8, 8, 8, 8" Content="Ban 1" Background="Brown" Foreground="White" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <GroupBox>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="23"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </GroupBox>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
